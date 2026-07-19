@@ -43,7 +43,6 @@
     </style>
   </defs>
 
-  <rect width="1200" height="500" fill="#010101"/>
   <g filter="url(#shadow)">
     <rect x="22" y="22" width="1156" height="456" rx="30" fill="#070506" stroke="#3e1117" stroke-width="2"/>
     <rect x="36" y="36" width="1128" height="428" rx="24" fill="url(#bg)"/>
