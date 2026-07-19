@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Logout terminal</title>
+  <desc id="desc">A cinematic terminal closing an encrypted session.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#020202"/>
+      <stop offset=".5" stop-color="#080405"/>
+      <stop offset="1" stop-color="#010101"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="70%">
+      <stop stop-color="#8e2631" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#8e2631" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#eadfd6" opacity=".025"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity=".9"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="screen"><rect x="36" y="36" width="1128" height="428" rx="24"/></clipPath>
+    <style>
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+      .prompt{fill:#b93643;font-size:28px;font-weight:700}
+      .text{fill:#eadfd6;font-size:26px}
+      .muted{fill:#9f8f8b;font-size:24px}
+      .final{fill:#d7c6be;font-size:27px;font-weight:600}
+      .line{opacity:0;animation:show .2s steps(1,end) forwards}
+      .a1{animation-delay:.35s}.a2{animation-delay:1.2s}.a3{animation-delay:2.2s}.a4{animation-delay:3.45s}.a5{animation-delay:4.15s}.a6{animation-delay:5.1s}
+      .bar{transform-origin:88px 312px;transform:scaleX(0);animation:load 1.15s ease-out 2.35s forwards}
+      .cursor{animation:blink 1s steps(1,end) 5.2s infinite}
+      .screenFade{animation:dim 9s ease-in-out 6.2s infinite}
+      .flicker{animation:flicker 9s linear infinite}
+      @keyframes show{to{opacity:1}}
+      @keyframes load{to{transform:scaleX(1)}}
+      @keyframes blink{0%,48%{opacity:1}49%,100%{opacity:0}}
+      @keyframes dim{0%,45%,100%{opacity:1}60%,78%{opacity:.76}}
+      @keyframes flicker{0%,95%,97%,100%{opacity:1}96%{opacity:.84}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}.line{opacity:1}.bar{transform:scaleX(1)}}
+    </style>
+  </defs>
+
+  <rect width="1200" height="500" fill="#010101"/>
+  <g filter="url(#shadow)">
+    <rect x="22" y="22" width="1156" height="456" rx="30" fill="#070506" stroke="#3e1117" stroke-width="2"/>
+    <rect x="36" y="36" width="1128" height="428" rx="24" fill="url(#bg)"/>
+  </g>
+
+  <g clip-path="url(#screen)" class="screenFade">
+    <rect x="36" y="36" width="1128" height="428" fill="url(#halo)"/>
+    <rect x="36" y="36" width="1128" height="428" fill="url(#scanlines)"/>
+    <line x1="36" y1="82" x2="1164" y2="82" stroke="#341117" opacity=".7"/>
+    <circle cx="65" cy="59" r="6" fill="#8e2631"/>
+    <circle cx="88" cy="59" r="6" fill="#6f5d42"/>
+    <circle cx="111" cy="59" r="6" fill="#4e6550"/>
+    <text x="600" y="66" text-anchor="middle" class="mono" fill="#6f5e5c" font-size="17">secure-shell — closing session</text>
+
+    <g class="mono flicker">
+      <text x="88" y="132" class="prompt line a1">&gt; logout</text>
+      <text x="88" y="184" class="muted line a2">Saving session...</text>
+      <text x="88" y="236" class="muted line a3">Closing encrypted connection...</text>
+
+      <rect x="88" y="274" width="610" height="12" rx="6" fill="#211417" class="line a3"/>
+      <rect x="88" y="274" width="610" height="12" rx="6" fill="#8e2631" class="bar" filter="url(#glow)"/>
+      <g class="line a4">
+        <circle cx="88" cy="322" r="4" fill="#8e2631"/>
+        <text x="108" y="330" class="text">Done.</text>
+      </g>
+
+      <text x="88" y="382" class="text line a5">Connection terminated.</text>
+      <text x="88" y="430" class="final line a6" filter="url(#glow)">See you in the next commit.</text>
+      <rect x="510" y="405" width="15" height="30" rx="1" fill="#d7c6be" class="line a6 cursor"/>
+    </g>
+
+    <rect x="36" y="36" width="1128" height="428" fill="#000" opacity="0">
+      <animate attributeName="opacity" values="0;0;.08;0" keyTimes="0;.75;.88;1" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

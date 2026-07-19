@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">brain.service status terminal</title>
+  <desc id="desc">A glitchy CRT terminal showing the status of brain.service.</desc>
+  <defs>
+    <radialGradient id="crt" cx="50%" cy="45%" r="72%">
+      <stop offset="0" stop-color="#16080b"/>
+      <stop offset="0.58" stop-color="#080304"/>
+      <stop offset="1" stop-color="#010101"/>
+    </radialGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#281b1d"/>
+      <stop offset="1" stop-color="#090607"/>
+    </linearGradient>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#f2deda" opacity=".045"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#000" flood-opacity=".9"/>
+    </filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="distort" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.15" numOctaves="1" seed="7" result="n">
+        <animate attributeName="baseFrequency" dur="7s" values="0.009 0.15;0.014 0.12;0.009 0.15" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+    <filter id="noise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .08"/></feComponentTransfer>
+    </filter>
+    <clipPath id="screen"><rect x="54" y="58" width="1092" height="504" rx="28"/></clipPath>
+    <style>
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+      .prompt{fill:#d6424f;font-size:27px;font-weight:700}
+      .text{fill:#eadfd6;font-size:26px}
+      .muted{fill:#a99591;font-size:25px}
+      .accent{fill:#f05a65;font-size:26px;font-weight:700}
+      .line{opacity:0;animation:reveal .25s steps(1,end) forwards}
+      .l1{animation-delay:.35s}.l2{animation-delay:.9s}.l3{animation-delay:1.35s}.l4{animation-delay:1.8s}.l5{animation-delay:2.25s}.l6{animation-delay:2.7s}.l7{animation-delay:3.15s}.l8{animation-delay:3.6s}
+      .pulse{animation:pulse 2.2s ease-in-out 2s infinite}
+      .error{animation:errorGlitch 4.5s steps(1,end) 3.6s infinite}
+      .flicker{animation:flicker 8s linear infinite}
+      .cursor{animation:blink 1s steps(1,end) infinite}
+      .sweep{animation:sweep 5.8s linear infinite}
+      .slice1{animation:slice1 5.1s steps(1,end) infinite}
+      .slice2{animation:slice2 6.3s steps(1,end) infinite}
+      @keyframes reveal{to{opacity:1}}
+      @keyframes blink{0%,48%{opacity:1}49%,100%{opacity:0}}
+      @keyframes pulse{0%,100%{opacity:.72}50%{opacity:1;filter:url(#glow)}}
+      @keyframes flicker{0%,91%,94%,100%{opacity:1}92%{opacity:.68}93%{opacity:.9}}
+      @keyframes errorGlitch{0%,86%,100%{transform:translate(0);opacity:1}87%{transform:translate(-3px,1px)}88%{transform:translate(4px,-1px);opacity:.55}89%{transform:translate(-1px,0)}90%{transform:translate(0)}}
+      @keyframes sweep{from{transform:translateY(-540px)}to{transform:translateY(540px)}}
+      @keyframes slice1{0%,93%,100%{transform:translateX(0);opacity:0}94%{transform:translateX(18px);opacity:.5}95%{transform:translateX(-12px);opacity:.35}96%{opacity:0}}
+      @keyframes slice2{0%,88%,100%{transform:translateX(0);opacity:0}89%{transform:translateX(-20px);opacity:.35}90%{transform:translateX(10px);opacity:.25}91%{opacity:0}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}.line{opacity:1}}
+    </style>
+  </defs>
+
+  <rect width="1200" height="620" fill="#010101"/>
+  <g filter="url(#shadow)">
+    <rect x="28" y="28" width="1144" height="564" rx="38" fill="url(#frame)" stroke="#4d1118" stroke-width="3"/>
+    <rect x="45" y="47" width="1110" height="526" rx="31" fill="#020202" stroke="#250b0f" stroke-width="5"/>
+    <rect x="54" y="58" width="1092" height="504" rx="28" fill="url(#crt)"/>
+  </g>
+
+  <g clip-path="url(#screen)">
+    <rect x="54" y="58" width="1092" height="504" fill="url(#scanlines)"/>
+    <rect x="54" y="58" width="1092" height="504" filter="url(#noise)" opacity=".45"/>
+    <rect x="54" y="58" width="1092" height="42" fill="#d6424f" opacity=".028" class="sweep"/>
+    <rect x="54" y="244" width="1092" height="12" fill="#ff4b58" class="slice1"/>
+    <rect x="54" y="432" width="1092" height="8" fill="#f2deda" class="slice2"/>
+
+    <g class="mono flicker" filter="url(#distort)">
+      <text x="88" y="112" class="prompt line l1">&gt; systemctl status brain.service</text>
+      <text x="88" y="172" class="text line l2">● brain.service</text>
+      <text x="88" y="226" class="muted line l3">Loaded: <tspan class="text">yes</tspan></text>
+      <text x="88" y="270" class="muted line l4">Active: <tspan class="accent pulse">overthinking</tspan></text>
+      <text x="88" y="336" class="muted line l5">Memory: <tspan class="text">99%</tspan></text>
+      <text x="88" y="380" class="muted line l6">Coffee: <tspan class="text">required</tspan></text>
+      <text x="88" y="424" class="muted line l7">Sleep: <tspan class="text">unavailable</tspan></text>
+      <text x="88" y="494" class="accent line l8 error">Errors: too many to display</text>
+      <rect x="590" y="471" width="15" height="29" rx="1" fill="#eadfd6" class="line l8 cursor"/>
+    </g>
+
+    <g opacity=".16" class="mono" aria-hidden="true">
+      <text x="91" y="496" fill="#49d8e8" font-size="26" class="error">Errors: too many to display</text>
+      <text x="85" y="492" fill="#ff3350" font-size="26" class="error">Errors: too many to display</text>
+    </g>
+  </g>
+
+  <circle cx="1118" cy="86" r="5" fill="#d6424f" opacity=".8"><animate attributeName="opacity" values=".25;1;.25" dur="1.8s" repeatCount="indefinite"/></circle>
+  <text x="88" y="588" class="mono" fill="#5b4748" font-size="15" letter-spacing="3">MENTAL PROCESS MONITOR // CHANNEL 07</text>
+</svg>
