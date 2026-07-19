@@ -20,6 +20,6 @@
 
 <br>
 
-<sub><code>// And are you a 0 or a 1?</code></sub>
+<sub><code>// And you, are you a 0 or a 1?</code></sub>
 
 </div>
