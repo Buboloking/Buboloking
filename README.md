@@ -4,7 +4,7 @@
 
 <br>
 
-<img src="./Gemini_Generated_Image_9e5vi29e5vi29e5v-2.png" />
+<img src="./assets/quote-control.png" width="100%" alt="Control is an illusion. Good code is not." />
 
 <br>
 
@@ -12,11 +12,10 @@
 
 <br>
 
-<img src="./Gemini_Generated_Image_9e5vi29e5vi29e5v-3.png" />
+<img src="./assets/quote-code.png" width="100%" alt="Code never lies. People do." />
 
 <br>
 
 <img src="./assets/logout.svg" width="100%" alt="Animated terminal logout sequence" />
 
 </div>
-
